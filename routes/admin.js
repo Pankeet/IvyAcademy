@@ -98,11 +98,11 @@ adminRouter.post('/create/course', adminMiddleware , async function(req,res){
 
 //To update course created by Admin
 adminRouter.put('/course', function(req,res){
-
+    
 });
 
 // Admin 's courses
-adminRouter.get('/mycourse', adminMiddleware , async function(req,res){
+adminRouter.get('/mycourses', adminMiddleware , async function(req,res){
     const adminId = req.adminId;
     try{
     const mycourses = await CourseModel.findOne({
@@ -110,10 +110,7 @@ adminRouter.get('/mycourse', adminMiddleware , async function(req,res){
     })
     if(mycourses){
         res.json({
-            title : mycourses.title,
-            description : mycourses.description,
-            price : mycourses.price,
-            imageURL : mycourses.imageURL
+            mycourses
         })
     }
     else{
