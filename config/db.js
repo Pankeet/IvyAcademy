@@ -7,7 +7,6 @@ mongoose.connect(process.env.MONGO_URL);
 
 // User Schema
 const users = new Schema({
-    userId : ObjectId,
     email : {type: String, unique : true} , 
     password : {type : String , unique : true},
     Fullname : String,
@@ -16,7 +15,6 @@ const users = new Schema({
 
 // Admin Schema
 const admins = new Schema({
-    adminId : ObjectId,
     fullname : String, 
     email : {type: String, unique : true} , 
     password : {type : String , unique : true},
@@ -30,7 +28,7 @@ const courses = new Schema({
     description : String,
     imageURL : String,
     price : Number,
-    CreatorId : ObjectId 
+    creatorId : ObjectId ,
 }); 
 
 // Users Purchases

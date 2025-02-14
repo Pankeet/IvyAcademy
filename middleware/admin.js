@@ -5,7 +5,7 @@ function adminMiddleware(req, res,next){
     const decoded = jwt.verify(token , process.env.JWT_ADMIN_SECRET);
 
     if(decoded){
-        req.adminId = decoded.Id;
+        req.adminId = decoded.id;
         next();
     }
     else{
@@ -16,5 +16,5 @@ function adminMiddleware(req, res,next){
 }
 
 module.exports = {
-    adminMiddleware 
+    adminMiddleware : adminMiddleware
 }

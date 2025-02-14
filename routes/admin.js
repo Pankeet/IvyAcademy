@@ -82,23 +82,24 @@ adminRouter.post('/create/course', adminMiddleware , async function(req,res){
         description,
         imageURL,
         price,
-        CreatorId : adminId
+        creatorId : adminId
     });
+
+    res.status(200).json({
+        message : "Course Created Successfully ❄️",
+        course_Id : course._id
+    })
     }
     catch(e){
         return res.status(503).json({
             message : "Course cannot be created ! 🥺"
         })
     }
-    res.status(200).json({
-        message : "Course Created Successfully ❄️",
-        course_ID : course._id
-    })
 });
 
 //To update course created by Admin
 adminRouter.put('/course', function(req,res){
-    
+
 });
 
 // Admin 's courses
@@ -108,15 +109,10 @@ adminRouter.get('/mycourses', adminMiddleware , async function(req,res){
     const mycourses = await CourseModel.findOne({
         creatorId : adminId
     })
-    if(mycourses){
         res.json({
             mycourses
-        })
+        });
     }
-    else{
-        res.send("You have not created any courses yet");
-    }
-}
 catch(e){
     res.status(501).json({
         error : "Could not find User"
@@ -127,3 +123,4 @@ catch(e){
 module.exports = {
     adminRouter : adminRouter
 }
+
