@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-function usermiddleware(req, res,next){
+function userMiddleware(req, res,next){
     const token = req.headers.token;
+    try{
     const decoded = jwt.verify(token , process.env.JWT_USER_SECRET);
 
     if(decoded){
@@ -9,12 +10,17 @@ function usermiddleware(req, res,next){
         next();
     }
     else{
-        res.status(403).json({
+        return res.status(403).json({
             message : "You are not signed IN"
         })
     } 
+    }
+    catch(e){
+        res.status(501).send("Couldn't verify token");
+    }
 }
 
+
 module.exports = {
-    usermiddleware 
+    userMiddleware : userMiddleware
 }
