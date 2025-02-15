@@ -16,7 +16,7 @@ function userMiddleware(req, res,next){
     } 
     }
     catch(e){
-        res.status(501).send("Couldn't verify token");
+        res.status(401).send("Couldn't verify token");
     }
 }
 
