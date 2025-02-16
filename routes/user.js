@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const bcrypt = require('bcrypt');
-const { UserModel } = require('../config/db');
-const { userMiddlware } = require('../middleware/user');
+const { UserModel, PurchaseModel , CourseModel } = require('../config/db');
+const { userMiddleware } = require('../middleware/user');
 const jwt = require('jsonwebtoken');
 const userRouter = Router()
 require('dotenv').config();
@@ -70,10 +70,20 @@ require('dotenv').config();
     });
 
     //Purchases
-    userRouter.get('/purchases' , function(req, res){
-    res.json({
-        message : "All courses are mentioned here"
-    });
+    userRouter.get('/purchases' , userMiddleware , async function(req, res){
+        const userId = req.userId;
+
+        const purchases = await PurchaseModel.find({
+            userId
+        })
+
+        const courseData = await CourseModel.find({
+            _id : {$in :purchases.map(x=>x.courseId)}
+        })
+        return res.json({
+            purchases,
+            courseData
+        }) 
     });
 
 module.exports = {

@@ -2,9 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 require('dotenv').config();
-const { userRouter } = require('./IvyAcademy/routes/user');
-const { courseRouter } = require('./IvyAcademy/routes/courses');
-const { adminRouter } = require('./IvyAcademy/routes/admin');
+const { userRouter } = require('./routes/user');
+const { courseRouter } = require('./routes/courses');
+const { adminRouter } = require('./routes/admin');
 
 app.use(express.json());
 

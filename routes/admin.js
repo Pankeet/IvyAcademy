@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-// Admin Signup ( DONE ✔️)
+// Admin Signup 
 adminRouter.post('/signup' , async function(req,res){
     const { fullname , email , password , phoneNum , Address } = req.body;
 
@@ -30,7 +30,7 @@ adminRouter.post('/signup' , async function(req,res){
     })
 });
 
-//Admin Signin ( DONE ✔️)
+//Admin Signin 
 adminRouter.post('/signin', async function(req,res){
     const { email , password } = req.body;
 
@@ -71,7 +71,7 @@ adminRouter.post('/signin', async function(req,res){
         
     });
 
-// Admin Rights
+// Admin Rights 
 adminRouter.post('/create/course', adminMiddleware , async function(req,res){
     const adminId = req.adminId;
 
@@ -97,16 +97,33 @@ adminRouter.post('/create/course', adminMiddleware , async function(req,res){
     }
 });
 
-//To update course created by Admin
-adminRouter.put('/course', function(req,res){
+//To update course created by that Admin only
+adminRouter.put('/course', adminMiddleware ,async function(req,res){
+    const adminId = req.adminId;
+    const {title , description , imageURL , price , courseId} = req.body;
+
+    const update = await CourseModel.updateOne({
+        _id : courseId,
+    creatorId : adminId
+},{ 
+    title ,
+    description,
+    imageURL,
+    price,
+    })
+
+    return res.json({
+        message : "Course Updated Successfully ",
+        course_Id : courseId
+    })
 
 });
 
-// Admin 's courses
+// Admin 's courses (Update 1.1)
 adminRouter.get('/mycourses', adminMiddleware , async function(req,res){
     const adminId = req.adminId;
     try{
-    const mycourses = await CourseModel.findOne({
+    const mycourses = await CourseModel.find({
         creatorId : adminId
     })
         res.json({

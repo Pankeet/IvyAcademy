@@ -6,7 +6,7 @@ function userMiddleware(req, res,next){
     const decoded = jwt.verify(token , process.env.JWT_USER_SECRET);
 
     if(decoded){
-        req.userId = decoded.Id;
+        req.userId = decoded.id;
         next();
     }
     else{
