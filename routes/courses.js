@@ -1,9 +1,8 @@
 const { Router } = require('express');
 const { userMiddleware } = require('../middleware/user');
-const { PurchaseModel } = require('../config/db');
-const { CourseModel } = require('../config/db');
+const { PurchaseModel , CourseModel } = require('../config/db');
 const courseRouter = Router();
-
+// TO get all courses to the user ( without auth )
     courseRouter.get('/all' ,  async function(req, res){
         const courses = await CourseModel.find({});
         return res.json({
@@ -11,10 +10,11 @@ const courseRouter = Router();
         })
     });
 
+// if the logged in user wants to purchase a course
     courseRouter.post('/getCourse', userMiddleware , async function(req, res){
          const userId = req.userId;
          const courseId = req.body.courseId;
-
+    try{
          await PurchaseModel.create(
             {
                userId : userId,
@@ -24,6 +24,12 @@ const courseRouter = Router();
          res.json({
             message : "Course Purchased Successfully "
          })
+    }
+    catch(e){
+            res.status(501).json({
+                error : "OOPS ! Something went wrong "
+            })
+    }
     });
 
 module.exports = {
