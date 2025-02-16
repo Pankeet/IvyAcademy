@@ -3,20 +3,12 @@ require('dotenv').config();
 function userMiddleware(req, res,next){
     const token = req.headers.token;
     try{
-    const decoded = jwt.verify(token , process.env.JWT_USER_SECRET);
-
-    if(decoded){
+        const decoded = jwt.verify(token , process.env.JWT_USER_SECRET);
         req.userId = decoded.id;
         next();
-    }
-    else{
-        return res.status(403).json({
-            message : "You are not signed IN"
-        })
     } 
-    }
     catch(e){
-        res.status(401).send("Couldn't verify token");
+        res.status(401).send("Couldn't verify token  , Please sign-in again ");
     }
 }
 
