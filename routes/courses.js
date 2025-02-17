@@ -2,6 +2,7 @@ const { Router } = require('express');
 const { userMiddleware } = require('../middleware/user');
 const { PurchaseModel , CourseModel } = require('../config/db');
 const courseRouter = Router();
+
 // TO get all courses to the user ( without auth )
     courseRouter.get('/all' ,  async function(req, res){
         const courses = await CourseModel.find({});

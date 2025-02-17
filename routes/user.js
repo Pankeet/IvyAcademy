@@ -2,12 +2,13 @@ const { Router } = require('express');
 const bcrypt = require('bcrypt');
 const { UserModel, PurchaseModel , CourseModel } = require('../config/db');
 const { userMiddleware } = require('../middleware/user');
+const { validateUsingZod } = require('../middleware/validation');
 const jwt = require('jsonwebtoken');
 const userRouter = Router()
 require('dotenv').config();
 
 // SignUp Endpoint ( DONE ✔️ )
-    userRouter.post('/signup', async function(req, res){
+    userRouter.post('/signup', validateUsingZod , async function(req, res){
         const { email, password, Fullname , phoneNum } = req.body;
         const hp_user = await bcrypt.hash(password , 10);
 
@@ -29,7 +30,7 @@ require('dotenv').config();
     });
 
     //Signin Endpoint ( DONE ✔️)
-    userRouter.post('/signin',async function(req, res){
+    userRouter.post('/signin', async function(req, res){
         const { email , password } = req.body;
 
         try{

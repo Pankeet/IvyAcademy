@@ -4,6 +4,7 @@ function userMiddleware(req, res,next){
     const token = req.headers.token;
     try{
         const decoded = jwt.verify(token , process.env.JWT_USER_SECRET);
+        console.log(decoded);
         req.userId = decoded.id;
         next();
     } 

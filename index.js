@@ -14,7 +14,7 @@ app.use('/admin', adminRouter);
 
 async function main(){
     await mongoose.connect(process.env.MONGO_URL);  
-    app.listen(3000); 
+    app.listen(3001); 
     console.log("Listening to MongoDb"); 
 }
  main();
