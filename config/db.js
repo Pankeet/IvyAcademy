@@ -8,7 +8,7 @@ mongoose.connect(process.env.MONGO_URL);
 // User Schema
 const users = new Schema({
     email : {type: String, unique : true} , 
-    password : {type : String , unique : true},
+    password : {type : String},
     Fullname : String,
     phoneNum : Number
 });
@@ -17,7 +17,7 @@ const users = new Schema({
 const admins = new Schema({
     fullname : String, 
     email : {type: String, unique : true} , 
-    password : {type : String , unique : true},
+    password : {type : String },
     phoneNum : Number,
     Address : String,
 });
