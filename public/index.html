@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IvyAcademy</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>IvyAcademy</h1>
+        <nav>
+            <ul>
+                <li><a href="#signup">Sign Up</a></li>
+                <li><a href="#login">Login</a></li>
+                <li><a href="#courses">Courses</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="signup">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <input type="text" placeholder="Full Name" name="fullname" required>
+            <input type="email" placeholder="Email" name="email" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <input type="number" placeholder="Phone Number" name="phoneNum" required>
+            <button type="submit">Sign Up</button>
+        </form>
+    </section>
+
+    <section id="login">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="email" placeholder="Email" name="email" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+    </section>
+
+    <section id="courses">
+        <h2>Available Courses</h2>
+        <div id="courseList"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 IvyAcademy. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
