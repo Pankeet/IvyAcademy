@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const bcrypt = require('bcrypt');
-const { UserModel, PurchaseModel , CourseModel } = require('../config/db');
+const { UserModel, PurchaseModel , CourseModel } = require('../../config/db');
 const { userMiddleware } = require('../middleware/user');
 const { validateUsingZod } = require('../middleware/validation');
 const jwt = require('jsonwebtoken');
