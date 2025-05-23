@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Armies Display';
+    src: url('/fonts/Armiesdisplay.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+.headerCSS{
+  @apply p-2 mr-8 my-2 mt-4 ml-3 cursor-pointer
+}
