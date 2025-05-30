@@ -4,16 +4,16 @@ import '../App.css';
 import * as motion from "motion/react-client"
 export default function Navbar() {
   return (
-    <div className="flex font-sans text-md ml-4">
+    <div className="flex font-serif text-md ml-4">
       <div>
-        <img src={logo} alt="Logo" className="w-28 h-12 m-3 rounded-xl cursor-pointer"/>
+        <img src={logo} alt="Logo" className="w-auto h-12 m-3 rounded-xl cursor-pointer"/>
       </div>
       <div className="flex">
-        <motion.div whileHover={{scale:1.1}} whileTap={{scale:0.9}} class="headerCSS"><b>Courses</b></motion.div>
-        <motion.div whileHover={{scale:1.1}} whileTap={{scale:0.9}} class="headerCSS">Result</motion.div>
-        <motion.div whileHover={{scale:1.1}} whileTap={{scale:0.9}}class="headerCSS">Test</motion.div>
-        <motion.div whileHover={{scale:1.1}} whileTap={{scale:0.9}}class="headerCSS">Scholarship</motion.div>
-        <motion.div whileHover={{scale:1.1}} whileTap={{scale:0.9}}class="headerCSS">More</motion.div>
+        <motion.span whileHover={{scale:1.1}} whileTap={{scale:0.9}} className="headerCSS"><b>Courses</b></motion.span>
+        <motion.span whileHover={{scale:1.1}} whileTap={{scale:0.9}} className="headerCSS">Result</motion.span>
+        <motion.span whileHover={{scale:1.1}} whileTap={{scale:0.9}} className="headerCSS">Test</motion.span>
+        <motion.span whileHover={{scale:1.1}} whileTap={{scale:0.9}} className="headerCSS">Scholarship</motion.span>
+        <motion.span whileHover={{scale:1.1}} whileTap={{scale:0.9}} className="headerCSS">More</motion.span>
       </div>
       <div className="flex">
         <div><img src= {callimg} alt="callUs" className="w-8 h-8 m-4 ml-80 mt-5 cursor-help"></img></div>

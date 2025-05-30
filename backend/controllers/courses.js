@@ -1,6 +1,6 @@
 const { Router } = require('express');
-const { userMiddleware } = require('../middleware/user');
-const { PurchaseModel , CourseModel } = require('../../config/db');
+const { userMiddleware } = require('../middlewares/user');
+const { PurchaseModel , CourseModel } = require('../model/user');
 const courseRouter = Router();
 
 // TO get all courses to the user ( without auth )

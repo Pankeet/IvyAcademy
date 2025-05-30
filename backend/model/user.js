@@ -7,10 +7,11 @@ mongoose.connect(process.env.MONGO_URL);
 
 // User Schema
 const users = new Schema({
+    firstname : String , 
+    lastname : String , 
     email : {type: String, unique : true} , 
     password : {type : String},
-    Fullname : String,
-    phoneNum : Number
+
 });
 
 // Admin Schema

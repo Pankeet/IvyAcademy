@@ -1,32 +1,43 @@
 const { Router } = require('express');
 const bcrypt = require('bcrypt');
-const { UserModel, PurchaseModel , CourseModel } = require('../../config/db');
-const { userMiddleware } = require('../middleware/user');
-const { validateUsingZod } = require('../middleware/validation');
+const { UserModel, PurchaseModel , CourseModel } = require('../model/user');
+const { userMiddleware } = require('../middlewares/user');
+const { validateUsingZod } = require('../middlewares/validation');
 const jwt = require('jsonwebtoken');
+const { message } = require('statuses');
 const userRouter = Router()
 require('dotenv').config();
 
 // SignUp Endpoint ( DONE ✔️ )
-    userRouter.post('/signup', validateUsingZod , async function(req, res){
-        const { email, password, Fullname , phoneNum } = req.body;
+    userRouter.post('/signup', async function(req, res){
+        const { firstname , lastname , email, password } = req.body;
+        console.log(req.body);
         const hp_user = await bcrypt.hash(password , 10);
 
-        try{
-        await UserModel.create({
-            email,
-            password : hp_user ,
-            Fullname,
-            phoneNum,
-        })
+    try{
+        const findUser = await UserModel.findOne({email});
+        if(!findUser){
+            await UserModel.create({
+                firstname ,
+                lastname , 
+                email ,
+                password : hp_user ,
+            })
+
+            return res.status(200).json({
+                    message : "Signup Successful"
+                })
+        }
+        else{
+            return res.status(409).json({
+                message : "User Already Exists"
+            })
+        }
     }
     catch(e){
-        return res.status(403).send("Creating user failed! ");
+        return res.status(403).send("Oops! Creating new user failed!");
     }
 
-    res.json({
-        message : "Signup Successful"
-    })
     });
 
     //Signin Endpoint ( DONE ✔️)
@@ -34,38 +45,36 @@ require('dotenv').config();
         const { email , password } = req.body;
 
         try{
-        const user = await UserModel.findOne({email : email});
-        
-        if(!user){
-            res.status(403).json({
-                message : "Invalid User, Please 🙏 SignUp First ! "
-            })
-        }
-
-        else{
-        const isMatch = await bcrypt.compare( password , user.password );
-        // User is validated so using JWT to authenticate
-        if(isMatch){
-            const token = jwt.sign({
-                id : user._id
-            },process.env.JWT_USER_SECRET);
-
-            res.status(200).json({
-                token : token ,
-                message : "SignIn Successful"
-            })
-
-        }
-        else{
-            res.status(403).json({
-                message : "Invalid Credentials"
-            })
-        }
+            const user = await UserModel.findOne({email : email});
+            if(!user){
+                return res.status(401).json({
+                    message : "Invalid User, Please 🙏 SignUp First ! "
+                })
             }
-        }
+            else{
+            const isMatch = await bcrypt.compare( password , user.password );
+
+            // User is validated so using JWT to authenticate
+            if(isMatch){
+                const token = jwt.sign({
+                    id : user._id, 
+                    email : user.email,
+                },process.env.JWT_USER_SECRET);
+
+                return res.status(200).json({
+                    token : token ,
+                    message : "SignIn Successful"
+                })
+            }
+            else{
+                return res.status(403).json({
+                    message : "Invalid Credentials"
+                })
+            }
+        }}
 
         catch(e){
-            res.status(503).send("Server Error");
+            res.status(503).json({message : "Server Error"});
         }
         
     });

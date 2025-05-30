@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const adminRouter = Router();
-const { AdminModel  ,  CourseModel} = require('../config/db');
-const { adminMiddleware } = require('../middleware/admin');
+const { AdminModel  ,  CourseModel} = require('../model/user');
+const { adminMiddleware } = require('../middlewares/admin');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();

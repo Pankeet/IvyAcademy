@@ -1,19 +1,16 @@
 const { z } = require('zod');
 const userSchema = z.object({
-        email : z.string().email(),
-        password : z.string() ,
-        Fullname : z.string(),
-        phoneNum : z.number()
+        firstname : z.string(),
+        lastname : z.string(),
+        email : z.string() ,
+        password : z.string()
 });
 
 function validateUsingZod(req, res , next){
-
+    const { firstname , lastname , email, password } = req.body;
     try{
         const Validate = userSchema.parse({
-            email : req.body.email ,
-            password : req.body.password ,
-            Fullname : req.body.Fullname,
-            phoneNum : req.body.phoneNum
+            firstname , lastname , email, password
         });
 
         if(validateUsingZod){
