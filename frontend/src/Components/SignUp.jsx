@@ -1,5 +1,6 @@
 import { useRef , useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 export default function SignUp(){
     return (
         <>
@@ -13,6 +14,7 @@ export default function SignUp(){
 function SignForm(){
 
     const [loading , setloading ] = useState(false);
+    const navigate = useNavigate();
 
     const firstnameRef = useRef(null);
     const lastnameRef = useRef(null);
@@ -43,6 +45,11 @@ function SignForm(){
             setloading((prev) => !prev );
         }
     }
+
+    function alreadyUser(){
+        navigate('/login');
+    }
+    
     return (
         <div className="shadow-md rounded-lg p-10 bg-white max-w-lg w-full">
             <h2 className="text-center text-2xl ">Create an Account </h2>
@@ -82,7 +89,7 @@ function SignForm(){
                     <button onClick={(e)=>handleSubmit(e)} disabled={loading} className={`bg-green-500 border outline-none items-center rounded-md w-full py-2 shadow-lg ${loading ? 'cursor-not-allowed' : 'cursor-pointer'}` }>{loading ? 'Signing Up....' : 'SignUp' }</button>
                 </div>
                 <div>
-                    <p className='cursor-help mt-2'>Already an Account ? <b className='text-semibold text-blue-500 cursor-pointer'>Login</b></p>
+                    <p className='cursor-help mt-2'>Already an Account ? <b className='text-semibold text-blue-500 cursor-pointer' onClick={alreadyUser}>Login</b></p>
                 </div>
             </form>
         </div>

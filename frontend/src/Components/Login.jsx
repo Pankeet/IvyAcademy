@@ -1,11 +1,12 @@
 import { useRef } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Login(){
 
     return (
         <>
-            <div className="bg-gray-200 min-h-screen flex justify-center items-center font-serif">
+            <div className="bg-gray-200 w-screen min-h-screen flex justify-center items-center font-serif overflow-hidden">
                 <LoginForm />
             </div>
         </>
@@ -13,6 +14,7 @@ function Login(){
 }
 
  function LoginForm(){
+    const navigate = useNavigate();
 
     const emailRef = useRef(null);
     const passRef = useRef(null);
@@ -34,10 +36,14 @@ function Login(){
         }
     }
 
+    function notaUser(){
+        navigate('/signup');
+    }
+
     return (
-        <div className="shadow-md rounded-lg p-10 bg-white max-w-md w-full">
+        <div className="shadow-lg rounded-lg p-10 bg-white max-w-md w-full">
             <h2 className="text-center text-2xl ">Login</h2>
-            <form action="" onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label className="text-lg">Email*</label>
                     <input type="email" 
@@ -59,7 +65,7 @@ function Login(){
                 </div>
                 
                 <div className='flex justify-center'>
-                    <p className='cursor-help'>Dont have an account ? <b className='text-blue-500 cursor-pointer' onClick={handleSubmit}>Sign Up</b></p>
+                    <p className='cursor-help'>Dont have an account ? <b className='text-blue-500 cursor-pointer' onClick={notaUser}>Sign Up</b></p>
                 </div>
             </form>
         </div>

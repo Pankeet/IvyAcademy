@@ -2,7 +2,12 @@ import logo from '/img/logo.png';
 import callimg from '/img/callimg.jpg';
 import '../App.css';
 import * as motion from "motion/react-client"
+import { useNavigate } from 'react-router-dom';
 export default function Navbar() {
+  const navigate = useNavigate();
+    function navtoLogin(){
+        navigate('/login');
+    }
   return (
     <div className="flex font-serif text-md ml-4">
       <div>
@@ -17,7 +22,7 @@ export default function Navbar() {
       </div>
       <div className="flex">
         <div><img src= {callimg} alt="callUs" className="w-8 h-8 m-4 ml-80 mt-5 cursor-help"></img></div>
-        <div className="mt-6 ml-1"><span className="border rounded-xl bg-transparent text-black hover:bg-slate-300 cursor-cell p-2">Login</span></div>
+        <div className="mt-6 ml-1"><span className="border rounded-xl bg-transparent text-black hover:bg-slate-300 cursor-cell p-2" onClick={navtoLogin}>Login</span></div>
     </div>
   </div>
   );
