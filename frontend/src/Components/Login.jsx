@@ -6,7 +6,7 @@ function Login(){
 
     return (
         <>
-            <div className="bg-gray-200 w-screen min-h-screen flex justify-center items-center font-serif overflow-hidden">
+            <div className="bg-gray-200 w-screen h-screen flex justify-center items-center font-serif overflow-hidden">
                 <LoginForm />
             </div>
         </>
@@ -41,7 +41,7 @@ function Login(){
     }
 
     return (
-        <div className="shadow-lg rounded-lg p-10 bg-white max-w-md w-full">
+        <div className="shadow-lg rounded-lg p-10 bg-white max-w-md w-full overflow-hidden">
             <h2 className="text-center text-2xl ">Login</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
@@ -64,8 +64,8 @@ function Login(){
                     <button type='submit' className='bg-green-500 text-lg text-center rounded-xl p-2 w-full'>Submit</button>
                 </div>
                 
-                <div className='flex justify-center'>
-                    <p className='cursor-help'>Dont have an account ? <b className='text-blue-500 cursor-pointer' onClick={notaUser}>Sign Up</b></p>
+                <div>
+                    <span className='cursor-help'> Dont have an account ? </span><b className='text-semibold text-blue-500 cursor-pointer' onClick={notaUser}>Login</b>
                 </div>
             </form>
         </div>

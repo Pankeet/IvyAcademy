@@ -11,12 +11,11 @@ require('dotenv').config();
 // SignUp Endpoint ( DONE ✔️ )
     userRouter.post('/signup', async function(req, res){
         const { firstname , lastname , email, password } = req.body;
-        console.log(req.body);
-        const hp_user = await bcrypt.hash(password , 10);
-
-    try{
-        const findUser = await UserModel.findOne({email});
-        if(!findUser){
+        
+        try{
+            const findUser = await UserModel.findOne({email});
+            if(!findUser){
+            const hp_user = await bcrypt.hash(password , 10);
             await UserModel.create({
                 firstname ,
                 lastname , 

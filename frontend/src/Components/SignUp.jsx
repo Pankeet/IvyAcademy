@@ -1,6 +1,8 @@
 import { useRef , useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 export default function SignUp(){
     return (
         <>
@@ -14,6 +16,7 @@ export default function SignUp(){
 function SignForm(){
 
     const [loading , setloading ] = useState(false);
+    const [err , seterr] = useState('');
     const navigate = useNavigate();
 
     const firstnameRef = useRef(null);
@@ -29,19 +32,31 @@ function SignForm(){
             lastname: lastnameRef.current.value,
             email : emailRef.current.value,
             password : passRef.current.value
+        }   
+
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if(!emailRegex.test(data.email)) {
+            seterr("Please Enter a correct email");
+            setloading((prev)=> !prev);
+            return ;
         }
-        
+        else{
+            seterr('');
+        }
+         
         try{
             let response = await axios.post('http://localhost:3001/user/signup' , data);
             if(response){
                 console.log('Server response : ' , response);
-                alert(response.data.message);
-                setloading((prev) => !prev );
+                toast.success(response.data.message);
+                setTimeout(()=>{
+                    setloading((prev) => !prev );
+                    navigate('/login')} , 1800);
             }
     }
         catch(err){
-            console.error("Error :" + err);
-            alert("Something went wrong !");
+            console.error("Error :" + err.response.data);
+            toast.error(err.response.data.message);
             setloading((prev) => !prev );
         }
     }
@@ -51,7 +66,7 @@ function SignForm(){
     }
     
     return (
-        <div className="shadow-md rounded-lg p-10 bg-white max-w-lg w-full">
+        <div className="shadow-md rounded-lg p-9 bg-white max-w-lg w-full">
             <h2 className="text-center text-2xl ">Create an Account </h2>
             <h4 className='text-center text-lg mb-3 font-extralight'> To get started fill out this form </h4>
             <form>
@@ -77,19 +92,20 @@ function SignForm(){
                     ref={emailRef}
                     placeholder='johndoe@gmail.com'>
                     </input>
+                    <p className='text-red-800 text-sm'>{err}</p>
                 </div>
                 <div>
                     <label className='text-lg'>Password*</label>
                     <input type='password'
                     className='p-2 w-full border rounded-lg  outline-none focus:ring-2 focus:ring-blue-500'
                     ref={passRef}
-                    placeholder='#JohnDoe169400'></input>
+                    placeholder='#JohnDoe16'></input>
                 </div>
                 <div className='flex justify-center mt-5'>
-                    <button onClick={(e)=>handleSubmit(e)} disabled={loading} className={`bg-green-500 border outline-none items-center rounded-md w-full py-2 shadow-lg ${loading ? 'cursor-not-allowed' : 'cursor-pointer'}` }>{loading ? 'Signing Up....' : 'SignUp' }</button>
+                    <button onClick={(e)=>handleSubmit(e)} disabled={loading} className={`mb-2 bg-green-500 border outline-none items-center rounded-md w-full py-2 shadow-lg ${loading ? 'cursor-not-allowed' : 'cursor-pointer'}` }>{loading ? 'Signing Up....' : 'SignUp' }</button>
                 </div>
                 <div>
-                    <p className='cursor-help mt-2'>Already an Account ? <b className='text-semibold text-blue-500 cursor-pointer' onClick={alreadyUser}>Login</b></p>
+                    <span className='cursor-help'>Already an Account ? </span><b className='text-semibold text-blue-500 cursor-pointer' onClick={alreadyUser}>Login</b>
                 </div>
             </form>
         </div>

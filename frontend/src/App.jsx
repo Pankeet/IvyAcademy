@@ -3,6 +3,7 @@ import Navbar from './Components/Navbar'
 import Login from './Components/Login'
 import SignUp from './Components/SignUp'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -23,6 +24,13 @@ function App() {
             </div>}></Route>  
         </Routes>
       </Router>
+      <ToastContainer
+                position="top-center"
+                autoClose={1500}
+                closeOnClick
+                pauseOnFocusLoss
+                theme="light"
+            />
     </>
   )
 }

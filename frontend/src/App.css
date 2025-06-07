@@ -12,3 +12,8 @@
 .headerCSS{
   @apply p-2 mr-8 my-2 mt-4 ml-3 cursor-pointer
 }
+
+
+html, body, #root {
+  overflow: auto;
+}
