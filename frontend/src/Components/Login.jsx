@@ -45,16 +45,18 @@ function Login(){
             <h2 className="text-center text-2xl ">Login</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                    <label className="text-lg">Email*</label>
+                    <label htmlFor='email' className="text-lg">Email*</label>
                     <input type="email" 
+                    id='email'
                     className='w-full px-4 py-2 border mt-1 rounded-lg focus:ring-2 focus:ring-red-400 outline-none' 
                     ref={emailRef} 
                     placeholder='Enter you email'></input>
                 </div>
                 
                 <div className='mb-5'>
-                    <label className="text-lg">Password*</label>
+                    <label htmlFor='password' className="text-lg">Password*</label>
                     <input type='password'
+                    id='password'
                     ref={passRef}
                     className='w-full px-3 py-2 mt-1 rounded-lg border focus:ring-2 focus:ring-red-400 outline-none'
                     placeholder='Enter your password'></input>

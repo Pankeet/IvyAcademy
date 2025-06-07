@@ -78,21 +78,24 @@ function SignForm(){
                 <input type="text" 
                         className="focus:ring-2 focus:ring-blue-500 border  rounded-lg outline-none p-2"
                         placeholder='John'
-                        ref={firstnameRef}></input>
+                        ref={firstnameRef}
+                        required></input>
 
                 <input type="text" 
                         className="ml-11 focus:ring-2 focus:ring-blue-500 border  rounded-lg outline-none p-2"
                         placeholder='Doe'
-                        ref={lastnameRef}></input>
+                        ref={lastnameRef}
+                        required ></input>
                 </div>
                 <div>
                     <label className='tex-lg'>Email*</label>
                     <input type='email'
                     className='p-2 w-full border rounded-lg  outline-none focus:ring-2 focus:ring-blue-500'
                     ref={emailRef}
-                    placeholder='johndoe@gmail.com'>
+                    placeholder='johndoe@gmail.com' 
+                    required>
                     </input>
-                    <p className='text-red-800 text-sm'>{err}</p>
+                    <p className='text-red-600 text-sm'>{err}</p>
                 </div>
                 <div>
                     <label className='text-lg'>Password*</label>
