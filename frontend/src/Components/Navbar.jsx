@@ -5,9 +5,11 @@ import { motion }from "motion/react"
 import { useNavigate } from 'react-router-dom';
 export default function Navbar() {
   const navigate = useNavigate();
+
     function navtoLogin(){
         navigate('/login');
     }
+    
   return (
     <div className="flex font-serif text-md ml-4">
       <div>
