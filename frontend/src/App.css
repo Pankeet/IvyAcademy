@@ -15,5 +15,5 @@
 
 
 html, body, #root {
-  overflow: auto;
+  overflow: hidden;
 }

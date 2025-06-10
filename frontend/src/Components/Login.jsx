@@ -6,7 +6,7 @@ function Login(){
 
     return (
         <>
-            <div className="bg-gray-200 w-screen h-screen flex justify-center items-center font-serif overflow-hidden">
+            <div className="bg-gray-200 w-screen h-screen flex justify-center items-center font-serif overflow-hidden -mt-5">
                 <LoginForm />
             </div>
         </>

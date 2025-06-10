@@ -1,7 +1,7 @@
 import logo from '/img/logo.png';
 import callimg from '/img/callimg.jpg';
 import '../App.css';
-import * as motion from "motion/react-client"
+import { motion }from "motion/react"
 import { useNavigate } from 'react-router-dom';
 export default function Navbar() {
   const navigate = useNavigate();

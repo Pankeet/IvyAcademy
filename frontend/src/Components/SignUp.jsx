@@ -1,12 +1,12 @@
 import { useRef , useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function SignUp(){
     return (
         <>
-            <div className="bg-gray-200 min-h-screen flex justify-center items-center font-serif">
+            <div className="bg-gray-200 min-h-screen -mt-5 flex justify-center items-center font-serif">
                 <SignForm />
             </div>
         </>
@@ -36,7 +36,7 @@ function SignForm(){
 
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if(!emailRegex.test(data.email)) {
-            seterr("Please Enter a correct email");
+            seterr("Please Enter a valid email");
             setloading((prev)=> !prev);
             return ;
         }
