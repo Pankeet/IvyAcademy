@@ -67,7 +67,7 @@ function Login(){
                 </div>
                 
                 <div>
-                    <span className='cursor-help'> Dont have an account ? </span><b className='text-semibold text-blue-500 cursor-pointer' onClick={notaUser}>Login</b>
+                    <span className='cursor-help'> Don't have an account ? </span><b className='text-semibold text-blue-500 cursor-pointer' onClick={notaUser}>Sign Up</b>
                 </div>
             </form>
         </div>

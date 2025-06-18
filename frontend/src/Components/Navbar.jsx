@@ -9,11 +9,15 @@ export default function Navbar() {
     function navtoLogin(){
         navigate('/login');
     }
+
+    function navtoHome(){
+      navigate('/');
+    }
     
   return (
     <div className="flex font-serif text-md ml-4">
       <div>
-        <img src={logo} alt="Logo" className="w-auto h-12 m-3 rounded-xl cursor-pointer"/>
+        <img src={logo} alt="Logo" onClick={navtoHome} className="w-auto h-12 m-3 rounded-xl cursor-pointer"/>
       </div>
       <div className="flex">
         <motion.span whileHover={{scale:1.1}} whileTap={{scale:0.9}} className="headerCSS"><b>Courses</b></motion.span>

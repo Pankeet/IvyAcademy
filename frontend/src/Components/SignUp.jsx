@@ -54,11 +54,17 @@ function SignForm(){
                     navigate('/login')} , 1800);
             }
     }
-        catch(err){
-            console.error("Error :" + err.response.data);
-            toast.error(err.response.data.message);
-            setloading((prev) => !prev );
+    catch(err){
+        console.error("Error :", err);
+    
+        if (err.response) {
+            toast.error(err.response?.data?.message || "Something Went Wrong ! ");
+        } else {
+            toast.error("Backend server not reachable. Please try again later.");
         }
+        setloading((prev) => !prev );
+    }
+    
     }
 
     function alreadyUser(){
@@ -102,7 +108,7 @@ function SignForm(){
                     <input type='password'
                     className='p-2 w-full border rounded-lg  outline-none focus:ring-2 focus:ring-blue-500'
                     ref={passRef}
-                    placeholder='#JohnDoe16'></input>
+                    placeholder='password'></input>
                 </div>
                 <div className='flex justify-center mt-5'>
                     <button onClick={(e)=>handleSubmit(e)} disabled={loading} className={`mb-2 bg-green-500 border outline-none items-center rounded-md w-full py-2 shadow-lg ${loading ? 'cursor-not-allowed' : 'cursor-pointer'}` }>{loading ? 'Signing Up....' : 'SignUp' }</button>
