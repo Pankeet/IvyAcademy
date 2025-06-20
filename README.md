@@ -1,8 +1,4 @@
-<img src="./awm2dqlg.png"
-style="width:0.28299in;height:0.28212in" /><img src="./52yzgs23.png"
-style="width:0.9878in;height:0.16927in" />
-
-**IvyAcademy** [MERN StackVersion](file:///home/api/assets/)
+my** [MERN StackVersion](file:///home/api/assets/)
 
 **Table** **of** **Contents**
 
