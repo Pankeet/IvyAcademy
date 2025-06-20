@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function SignUp(){
     return (
         <>
-            <div className="bg-gray-200 min-h-screen -mt-5 flex justify-center items-center font-serif">
+            <div className="bg-gray-200 min-h-screen -mt-5 grid place-content-center font-serif">
                 <SignForm />
             </div>
         </>
@@ -72,7 +72,7 @@ function SignForm(){
     }
     
     return (
-        <div className="shadow-md rounded-lg p-9 bg-white max-w-lg w-full">
+        <div className="shadow-md rounded-lg p-9 bg-white text-black max-w-lg w-full">
             <h2 className="text-center text-2xl ">Create an Account </h2>
             <h4 className='text-center text-lg mb-3 font-extralight'> To get started fill out this form </h4>
             <form>

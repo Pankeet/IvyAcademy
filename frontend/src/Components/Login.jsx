@@ -6,7 +6,7 @@ function Login(){
 
     return (
         <>
-            <div className="bg-gray-200 w-screen h-screen flex justify-center items-center font-serif overflow-hidden -mt-5">
+            <div className="bg-gray-200 h-screen flex justify-center items-center font-serif overflow-hidden -mt-5">
                 <LoginForm />
             </div>
         </>
@@ -41,7 +41,7 @@ function Login(){
     }
 
     return (
-        <div className="shadow-lg rounded-lg p-10 bg-white max-w-md w-full overflow-hidden">
+        <div className="shadow-lg rounded-lg p-10 bg-white text-black max-w-md w-full overflow-hidden">
             <h2 className="text-center text-2xl ">Login</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
