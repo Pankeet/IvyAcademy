@@ -37,11 +37,11 @@ export default function Navbar() {
         <motion.span whileHover={{scale:1.1}} whileTap={{scale:0.9}} className="headerCSS">More</motion.span>
       </div>
       <div className="flex">
-        <div className="mt-6 ml-80 hover:scale-105 duration-200"><span className="border rounded-xl bg-transparent hover:bg-slate-600 cursor-cell p-2">Contact US</span></div>
+        <div className="mt-6 ml-80 mr-1 hover:scale-105 duration-200"><span className="border rounded-xl bg-transparent hover:bg-slate-600 cursor-cell p-2">Contact US</span></div>
         <div>
-          <img src="/img/callme.svg" alt="callUs" className="dark:block hidden w-7 h-7 m-4 ml-2 mt-5 cursor-help"></img>
+          <img src="/img/callme.svg" alt="callUs" className="dark:block hidden w-7 h-7 m-4 ml-2 mt-6 cursor-help"></img>
           <img src="/img/callmeLight.svg" alt="callUsLightMode" className="block dark:hidden w-6 h-6 m-4 ml-2 mt-6 cursor-help"></img>
-          </div>
+        </div>
     </div>
   </div>
   );

@@ -34,6 +34,11 @@ function SignForm(){
             password : passRef.current.value
         }   
 
+        if(data.firstname === "" || data.lastname === "" || data.password === "") {
+            setloading((prev) => !prev);
+            toast.error("Please fill the details first");
+            return ;
+        }
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if(!emailRegex.test(data.email)) {
             seterr("Please Enter a valid email");
@@ -108,6 +113,7 @@ function SignForm(){
                     <input type='password'
                     className='p-2 w-full border rounded-lg  outline-none focus:ring-2 focus:ring-blue-500'
                     ref={passRef}
+                    required
                     placeholder='password'></input>
                 </div>
                 <div className='flex justify-center mt-5'>

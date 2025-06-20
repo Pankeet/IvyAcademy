@@ -13,9 +13,6 @@
   @apply p-2 lg:mr-8 lg:my-2 lg:mt-5 lg:ml-3 cursor-pointer ml-1 mr-2 p-2 block
 }
 
-footerCSS{
-  @apply grid place-content-center my-3
+.footerCSS {
+  @apply cursor-pointer;
 }
-
-
-

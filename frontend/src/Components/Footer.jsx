@@ -1,4 +1,6 @@
+import { useNavigate } from "react-router-dom";
 export default function Footer() {
+    const nav = useNavigate();
     return (
         <div className="grid grid-cols-4 border-t border-white mt-10 font-[Pacifico] py-9 bg-gray-900 text-white">
             <div className="col-span-1 flex flex-col gap-2 justify-center items-center">
@@ -13,11 +15,11 @@ export default function Footer() {
 
             <div className="col-span-1 flex flex-col justify-center items-center gap-2 text-center">
                 <span>Corporate Information</span>
-                <div className="bg-white w-20 h-[2px]"></div>
-                <span>Terms and Conditions</span>
-                <span>Privacy Policy</span>
-                <span>Disclaimer</span>
-                <span>About Us</span>
+                <div className="bg-white w-20 h-[2px] "></div>
+                <span className = "footerCSS" onClick={()=> nav('/*')}>Terms and Conditions</span>
+                <span className = "footerCSS" onClick={()=> nav('/*')}>Privacy Policy</span>
+                <span className = "footerCSS" onClick={()=> nav('/*')}>Disclaimer</span>
+                <span className = "footerCSS" onClick={()=> nav('/*')}>About Us</span>
             </div>
 
             <div className="col-span-1 flex flex-col justify-center items-center gap-2 text-center">
@@ -37,12 +39,11 @@ export default function Footer() {
 
             <div className="col-span-1 flex flex-col justify-center items-center gap-2 text-center">
                 <div><span>Follow Us On:</span></div>
-                <div className='flex flex-row gap-2'>
-                    <div><img className="w-9 h-9 rounded-lg" src="/img/insta.svg" alt="insta Logo"></img></div>
-                    <div><img className="w-9 h-9 rounded-lg" src="/img/fb.svg" alt="meta Logo"></img></div>
-                    <div><img className="w-10 h-10 rounded-xl -mt-[2px]" src="/img/linkedin.svg" alt="meta Logo"></img></div>
-                </div>
-                
+                <nav className='flex flex-row gap-2'>
+                    <a href="https://www.instagram.com/" target="_blank"><img className="w-9 h-9 rounded-lg" src="/img/insta.svg" alt="insta Logo"></img></a>
+                    <a href="https://www.facebook.com/" target="_blank"><img className="w-9 h-9 rounded-lg" src="/img/fb.svg" alt="meta Logo"></img></a>
+                    <a href="https://www.linkedin.com/in/pankeet04/" target="_blank"><img className="w-10 h-10 rounded-xl -mt-[2px]" src="/img/linkedin.svg" alt="meta Logo"></img></a>
+                </nav>
             </div>
         </div>
     );
