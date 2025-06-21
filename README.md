@@ -1,5 +1,3 @@
-my** [MERN StackVersion](file:///home/api/assets/)
-
 **Table** **of** **Contents**
 
 > • <u>Project Overview</u> • <u>Tech Stack</u>

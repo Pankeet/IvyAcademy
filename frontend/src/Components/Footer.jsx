@@ -6,7 +6,7 @@ export default function Footer() {
             <div className="col-span-1 flex flex-col gap-2 justify-center items-center">
                 <div className="flex items-center mb-2">
                     <img src="/img/brand.svg" alt="logo" className="w-10 h-10 rounded-3xl mr-2" />
-                    <span >Ivy</span>
+                    <span onClick={()=> nav('/')} className="cursor-grab" >Ivy</span>
                 </div>
                 <div>
                     <span className="ml-2 text-lg">"Your Knowledge Hub, <b>Reinvented</b>"</span>

@@ -1,38 +1,60 @@
-import { useRef } from 'react';
+import { useState , useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-function Login(){
+function Login({setlog}){
 
     return (
         <>
             <div className="bg-gray-200 h-screen flex justify-center items-center font-serif overflow-hidden -mt-5">
-                <LoginForm />
+                <LoginForm setlog={setlog}/>
             </div>
         </>
     )
 }
 
- function LoginForm(){
+ function LoginForm({setlog}){
+    const [loading , setloading] = useState(false);
     const navigate = useNavigate();
 
     const emailRef = useRef(null);
     const passRef = useRef(null);
 
-    async function handleSubmit(){
+    async function handleSubmit(e){
+        e.preventDefault();
+        setloading((prev) => !prev );
         const email = emailRef.current.value;
         const password = passRef.current.value;    
 
-        const data = {email , password};
-
-        try{
-            let response = await axios.post('http://localhost:3001/user/signin',data );
-            console.log("server response is : " , response.data.message);
-            alert('Logging in...');
+        const Logindata = {email:email , password: password};
+    
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if(!emailRegex.test(Logindata.email)) {
+            toast.error("Please Enter a valid email");
+            setloading((prev)=> !prev);
+            return ;
         }
-        catch(err){
-            console.error("Error :" ,err);
-            alert("Something Went Wrong");
+        else if ( Logindata.password === ""){
+            toast.error("Please enter the password");
+            setloading((prev)=> !prev);
+            return;
+        }
+        else{
+            try{
+                let response = await axios.post('http://localhost:3001/user/signin',Logindata );
+                console.log("server response is : " , response.data.message);
+                toast.success('Logging in...');
+                setTimeout(()=>{
+                    setloading((prev) => !prev );
+                    setlog(true)} , 1800);
+            }
+            catch(err){
+                console.error("Error :" ,err);
+                toast.error(err?.response?.data?.message || "Something Went wrong ! Try tomorrow");
+                setloading((prev)=>!prev);
+            }
         }
     }
 
@@ -63,12 +85,12 @@ function Login(){
                 </div>
 
                 <div className='mb-2'>
-                    <button type='submit' className='bg-green-500 text-lg text-center rounded-xl p-2 w-full'>Submit</button>
+                    <button type='submit' disabled={loading} className='bg-green-500 text-lg text-center rounded-xl p-2 w-full'>Submit</button>
                 </div>
                 
                 <div>
                     <span className='cursor-help'> Don't have an account ? </span><b className='text-semibold text-blue-500 cursor-pointer' onClick={notaUser}>Sign Up</b>
-                </div>
+                </div>  
             </form>
         </div>
     )
