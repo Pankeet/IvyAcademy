@@ -43,7 +43,7 @@ function Login({setlog}){
         }
         else{
             try{
-                let response = await axios.post('http://localhost:3001/user/signin',Logindata );
+                let response = await axios.post('https://ivyacademy.onrender.com/user/signin',Logindata );
                 console.log("server response is : " , response.data.message);
                 toast.success('Logging in...');
                 setTimeout(()=>{

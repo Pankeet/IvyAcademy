@@ -50,7 +50,7 @@ function SignForm(){
         }
          
         try{
-            let response = await axios.post('http://localhost:3001/user/signup' , data);
+            let response = await axios.post('https://ivyacademy.onrender.com/user/signup' , data);
             if(response){
                 console.log('Server response : ' , response);
                 toast.success(response.data.message);

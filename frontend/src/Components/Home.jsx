@@ -59,6 +59,7 @@ function SideBar({sidebar , setSidebar}){
             <div className="w-80 h-screen bg-sky-100 fixed top-0 left-0 md:relative">
                 <div className="cursor-pointer hover:bg-slate-500" onClick={() => setSidebar(!sidebar)}>
                     <SidebarClose />
+                    Comming Soon
                 </div>
             </div>
         )
@@ -68,11 +69,13 @@ function Content(){
     return (
         <div className="w-full">
             <div className="md:h-40 h-24 text-6xl font-serif bg-gray-900 text-white flex justify-center items-center"> Welcome to Ivy</div>
+
         <div className="grid grid-cols-11 gap-8 p-6">
-            <div className="h-72 rounded-2xl shadow-xl bg-red-300 md:col-span-3 -translate-y-16 hidden md:block"></div>
-            <div className="h-96 rounded-2xl shadow-lg bg-green-300 md:col-span-5 col-span-11"></div>
-            <div className="h-96 rounded-2xl shadow-lg bg-yellow-300 md:col-span-3 col-span-11 translate-y-10 -z-10"></div>
+            <div className="h-72 rounded-2xl shadow-xl bg-red-300 md:col-span-3 -translate-y-16 hidden md:block text-center">Comming Soon</div>
+            <div className="h-96 rounded-2xl shadow-lg bg-green-300 md:col-span-5 col-span-11 text-center">Comming Soon </div>
+            <div className="h-96 rounded-2xl shadow-lg bg-yellow-300 md:col-span-3 col-span-11 translate-y-10 -z-10 text-center">Comming Soon</div>
         </div>
+
         </div>
     )
 }
