@@ -100,6 +100,7 @@
     "minipass": "^5.0.0",
     "minizlib": "^2.1.2",
     "mkdirp": "^1.0.4",
+    "mongoose": "^8.16.0",
     "ms": "^2.1.3",
     "negotiator": "^0.6.3",
     "ngrok": "^5.0.0-beta.2",
