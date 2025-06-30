@@ -27,9 +27,9 @@ function App() {
 
   if(isloggedIn === false){
       return (
+        <Router>
         <>
         <div className='bg-white text-black dark:bg-gray-950 dark:text-white h-screen overflow-auto'>
-          <Router>
             <div className='dark:border-white border-gray-900 rounded-md shadow-slate-950 dark:shadow-gray-500 shadow-md mb-1'>
               <Navbar />
             </div>
@@ -45,7 +45,6 @@ function App() {
             <div>
               <Footer />
             </div>
-          </Router>
 
           <ToastContainer
             limit={2}
@@ -57,6 +56,7 @@ function App() {
           />
         </div>
         </>
+        </Router>
       );
     }
     else{
